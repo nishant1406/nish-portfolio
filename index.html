@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nishant Raj Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: fixed identity column on the left (name, nav, links), scrolling record of education, work, skills and projects on the right. Stacks on phones. */
+:root{
+  --bg:#f6f8fa; --surface:#ffffff; --fg:#14202b; --muted:#566574; --line:#dbe2e9;
+  --accent:#1559b7; --accent-soft:#e4eefb; --accent-fg:#ffffff;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e151c; --surface:#151e27; --fg:#e8eef4; --muted:#93a3b3; --line:#26323e;
+  --accent:#6aa6f5; --accent-soft:#16283d; --accent-fg:#0e151c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e151c; --surface:#151e27; --fg:#e8eef4; --muted:#93a3b3; --line:#26323e;
+  --accent:#6aa6f5; --accent-soft:#16283d; --accent-fg:#0e151c; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);margin:0;
+  padding-block:0;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:300px minmax(0,1fr);gap:64px;padding-block:56px}
+aside{position:sticky;top:56px;align-self:start;display:flex;flex-direction:column;gap:24px;min-width:0}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--accent);color:var(--accent-fg);display:grid;place-items:center;font:700 26px var(--display)}
+h1{font:700 clamp(2rem,4vw,2.6rem)/1.05 var(--display);margin:0;letter-spacing:-.02em;text-wrap:balance}
+.role{font-size:1.05rem;color:var(--fg);margin:6px 0 0}
+.loc{font:400 .8rem var(--mono);color:var(--muted);margin:4px 0 0}
+nav{display:flex;flex-direction:column;gap:2px}
+nav a{color:var(--muted);text-decoration:none;font:500 .8rem var(--mono);text-transform:uppercase;letter-spacing:.08em;padding:6px 0 6px 14px;border-left:2px solid var(--line)}
+nav a:hover,nav a.on{color:var(--fg);border-left-color:var(--accent)}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a,.btn{font:500 .85rem var(--body);text-decoration:none;color:var(--fg);border:1px solid var(--line);background:var(--surface);padding:7px 12px;border-radius:6px}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.theme{align-self:flex-start;font:500 .75rem var(--mono);background:none;border:1px solid var(--line);color:var(--muted);padding:5px 10px;border-radius:6px;cursor:pointer}
+.theme:hover{color:var(--fg);border-color:var(--accent)}
+main{display:flex;flex-direction:column;gap:64px;min-width:0}
+section{scroll-margin-top:40px}
+h2{font:700 .8rem var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin:0 0 24px;display:flex;align-items:center;gap:14px}
+h2::after{content:"";flex:1;height:1px;background:var(--line)}
+.about p{margin:0 0 14px;max-width:65ch;font-size:1.05rem}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:22px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.fact b{display:block;font:700 1.5rem var(--display);font-variant-numeric:tabular-nums}
+.fact span{font-size:.8rem;color:var(--muted)}
+.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:28px;border-left:2px solid var(--line);margin-left:5px}
+.tl li{position:relative;padding-left:26px}
+.tl li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.tl li.now::before{background:var(--accent)}
+.when{font:400 .78rem var(--mono);color:var(--muted);letter-spacing:.03em}
+.tl h3{font:700 1.2rem/1.25 var(--display);margin:2px 0 0;letter-spacing:-.01em}
+.org{color:var(--muted);margin:2px 0 8px;font-size:.95rem}
+.tl ul{margin:0;padding-left:18px;max-width:65ch}
+.tl ul li{padding:0;margin:3px 0;position:static}
+.tl ul li::before{display:none}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.skillgroup{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px}
+.skillgroup h3{font:700 1rem var(--display);margin:0 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:400 .78rem var(--mono);background:var(--accent-soft);color:var(--accent);padding:3px 9px;border-radius:4px}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.proj h3{font:700 1.1rem var(--display);margin:0}
+.proj p{margin:0;color:var(--muted);font-size:.94rem;flex:1}
+.proj a{font:500 .85rem var(--body)}
+.certs{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.certs li{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line)}
+.certs b{font-weight:600}
+.certs span{font:400 .8rem var(--mono);color:var(--muted);text-align:right}
+.contact p{max-width:55ch;margin:0 0 16px}
+.mail{display:inline-flex;gap:10px;align-items:center;flex-wrap:wrap}
+.mail code{font:500 .95rem var(--mono);background:var(--surface);border:1px solid var(--line);padding:7px 12px;border-radius:6px;user-select:all;overflow-wrap:anywhere}
+.btn{cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+footer{font:400 .75rem var(--mono);color:var(--muted);padding-top:8px}
+@media (max-width:860px){
+  .wrap{grid-template-columns:minmax(0,1fr);gap:40px;padding-block:32px}
+  aside{position:static}
+  nav{flex-direction:row;flex-wrap:wrap;gap:6px 14px}
+  nav a{border-left:0;padding:2px 0;border-bottom:2px solid var(--line)}
+  nav a:hover,nav a.on{border-bottom-color:var(--accent)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <aside>
+    <div class="avatar" id="avatar" aria-hidden="true"></div>
+    <div>
+      <h1 id="name"></h1>
+      <p class="role" id="role"></p>
+      <p class="loc" id="loc"></p>
+    </div>
+    <nav aria-label="Sections" id="nav"></nav>
+    <div class="links" id="links"></div>
+    <button class="theme" id="theme" type="button">Toggle theme</button>
+  </aside>
+
+  <main>
+    <section id="about" class="about"><h2>About</h2><div id="aboutBody"></div><div class="facts" id="facts"></div></section>
+    <section id="experience"><h2>Experience</h2><ol class="tl" id="expList"></ol></section>
+    <section id="education"><h2>Education</h2><ol class="tl" id="eduList"></ol></section>
+    <section id="skills"><h2>Skills</h2><div class="skills" id="skillList"></div></section>
+    <section id="projects"><h2>Selected work</h2><div class="projects" id="projList"></div></section>
+    <section id="certs"><h2>Certifications and awards</h2><ul class="certs" id="certList"></ul></section>
+    <section id="contact" class="contact"><h2>Contact</h2>
+      <p id="contactText"></p>
+      <div class="mail"><code id="email"></code><button class="btn" id="copy" type="button">Copy address</button></div>
+    </section>
+    <footer id="foot"></footer>
+  </main>
+</div>
+
+<script>
+/* ============================================================
+   EDIT THIS BLOCK ONLY. Everything on the page is built from it.
+   Anything in [square brackets] is a placeholder to replace.
+   ============================================================ */
+const SITE = {
+  name: "Nishant Raj",
+  role: "Senior Azure Engineer | Cloud Infrastructure, Data Platforms & DevOps",
+  location: "Solna, Stockholm County, Sweden",
+  email: "nishantrj728@gmail.com",
+  links: [
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/nishantraj14" }
+  ],
+  about: [
+    "Senior Azure platform engineer with 7.5 years of experience designing, building and operating enterprise-scale cloud infrastructure. I currently support a large Azure environment for Scandinavian Airlines System (SAS) through Tata Consultancy Services.",
+    "My work covers landing zone design, Infrastructure as Code with Terraform and Bicep, CI/CD standardisation, and identity and access governance with Entra ID and RBAC. I turn architecture and security requirements into self-service platform capabilities that other teams can use, and I own the day-to-day running of the platform.",
+    "I work closely with Data Architects, Security and Enterprise Architecture teams to build secure, scalable platforms for analytics, AI and machine learning. I am certified across Azure administration, data engineering and database administration."
+  ],
+  facts: [
+    { value: "7.5", label: "Years in cloud and data" },
+    { value: "20%", label: "Azure cost reduction delivered" },
+    { value: "10+", label: "Professional certifications" }
+  ],
+  experience: [
+    { when: "Aug 2022 to Present", title: "Senior Platform Engineer", org: "Tata Consultancy Services, Stockholm, Sweden", now: true,
+      points: [
+        "Designed and evolved CAF-aligned Azure landing zones and foundational platform services for secure, reusable environments across engineering teams.",
+        "Built reusable Terraform modules that replaced manual, ticket-based provisioning with self-service infrastructure as code.",
+        "Designed a disaster recovery and business-continuity architecture with defined RTO and RPO targets, and set up a secondary Azure region with VNets, peering, load balancing and firewall rules.",
+        "Owned identity and access governance in Microsoft Entra ID: RBAC, Privileged Identity Management, MFA and FIDO2.",
+        "Rolled out Azure Databricks Unity Catalog governance, workspace policies and cluster policies for better access control, auditability and data lineage.",
+        "Reduced Azure infrastructure costs by 20% through right-sizing and autoscaling, with Grafana and Azure Monitor dashboards for cost and platform health.",
+        "Mentored junior engineers on platform design, Terraform reviews and deployment trade-offs."
+      ] },
+    { when: "Jun 2021 to Jul 2022", title: "Senior Database Administrator", org: "Tata Consultancy Services, Gurugram, India",
+      points: [
+        "Led administration of SQL Server environments: installation, patching, backup and recovery, security and capacity management.",
+        "Built CI/CD pipelines in Azure DevOps and GitHub Actions that cut manual release steps and deployment errors.",
+        "Designed and managed data ingestion and transformation pipelines with Azure Data Factory and Azure Databricks.",
+        "Tuned performance, resolved complex production incidents and set up monitoring, backup and disaster recovery for production workloads."
+      ] },
+    { when: "Jun 2019 to May 2021", title: "Database Administrator", org: "Tata Consultancy Services, Gurugram, India",
+      points: [
+        "Led the end-to-end migration of a data warehouse from on-premises to Azure.",
+        "Supported migration of databases to Azure SQL Database and PostgreSQL, and provisioned Azure Synapse Analytics and Cosmos DB.",
+        "Built ETL pipelines with Azure Data Factory and Azure Databricks, and automated routine DBA tasks with PowerShell."
+      ] }
+  ],
+  education: [
+    { when: "2015 to 2019", title: "Bachelor of Engineering, Computer Science", org: "Lakshmi Narain College of Technology, Indore, India", points: [] },
+    { when: "2004 to 2014", title: "Primary and Secondary Education, Science", org: "Gyan Niketan", points: [] }
+  ],
+  skills: [
+    { group: "Azure operations and infrastructure", items: ["VMs", "App Services", "Functions", "AKS", "VNet", "VPN Gateway", "ExpressRoute", "WAF", "Private Endpoints", "DNS", "Hybrid cloud"] },
+    { group: "Automation and IaC", items: ["Terraform", "Bicep", "ARM Templates", "Azure DevOps", "GitHub Actions", "CI/CD", "PowerShell", "Python", "Bash", "Git"] },
+    { group: "Security and identity", items: ["Entra ID", "RBAC", "PIM", "Defender for Cloud", "Azure Policy"] },
+    { group: "Data platforms", items: ["Azure Databricks", "Data Factory", "Synapse Analytics", "Delta Lake", "Microsoft Fabric"] },
+    { group: "Databases", items: ["Azure SQL", "SQL Server", "PostgreSQL", "MySQL", "Cosmos DB"] },
+    { group: "Monitoring and FinOps", items: ["Azure Monitor", "Log Analytics", "Application Insights", "Grafana", "Cost optimisation"] },
+    { group: "Resilience and containers", items: ["Backup design", "Recovery runbooks", "Failover testing", "Kubernetes (AKS)", "Docker"] },
+    { group: "Languages", items: ["English (full professional)"] }
+  ],
+  projects: [
+    { title: "Azure landing zones", text: "CAF-aligned landing zones and foundational services that give engineering teams secure, consistent environments from day one.", stack: ["Azure", "Terraform", "Bicep"], url: "" },
+    { title: "Self-service infrastructure", text: "Reusable Terraform modules that replaced ticket-based provisioning, so teams deploy standard patterns on their own.", stack: ["Terraform", "Azure DevOps", "GitHub Actions"], url: "" },
+    { title: "Disaster recovery region", text: "A secondary Azure region with VNets, peering, load balancing and firewall rules, built to agreed RTO and RPO targets.", stack: ["Azure", "Networking", "Backup"], url: "" },
+    { title: "Databricks governance", text: "Unity Catalog, workspace policies and cluster policies that improved access control, auditability and data lineage.", stack: ["Databricks", "Unity Catalog", "Entra ID"], url: "" },
+    { title: "Cost optimisation", text: "Compute right-sizing and autoscaling that cut Azure spend by 20%, with Grafana and Azure Monitor dashboards for ongoing visibility.", stack: ["FinOps", "Grafana", "Azure Monitor"], url: "" },
+    { title: "Data warehouse migration", text: "End-to-end move of a data warehouse from on-premises to Azure, including Synapse, Azure SQL and Data Factory pipelines.", stack: ["Synapse", "Data Factory", "Azure SQL"], url: "" }
+  ],
+  certs: [
+    { name: "Microsoft Certified: Azure Administrator Associate (AZ-104)", by: "Microsoft", year: "" },
+    { name: "Microsoft Certified: Azure Data Engineer Associate (DP-200, DP-201)", by: "Microsoft", year: "" },
+    { name: "Microsoft Certified: Azure Database Administrator Associate (DP-300)", by: "Microsoft", year: "" },
+    { name: "Microsoft Certified: Azure Fundamentals (AZ-900)", by: "Microsoft", year: "" },
+    { name: "Microsoft Certified: Azure AI Fundamentals (AI-900)", by: "Microsoft", year: "" },
+    { name: "Associate Cloud Engineer", by: "Google Cloud", year: "" },
+    { name: "Databricks Fundamentals and Platform Architect", by: "Databricks", year: "" },
+    { name: "Implementing a Data Warehouse with SQL Server 2019", by: "Microsoft", year: "" },
+    { name: "Claude Certified Developer - Foundations", by: "Anthropic", year: "" },
+    { name: "Claude Certified Associate - Foundations", by: "Anthropic", year: "" },
+    { name: "Anthropic Claude Certified Architect", by: "Anthropic", year: "" }
+  ],
+  awards: ["On the Spot Award", "On the Spot Award", "Star of the Quarter Award"],
+  contactText: "Open to cloud platform, data engineering and DevOps roles, and to interesting projects. The quickest way to reach me is email or LinkedIn."
+};
+/* ================= end of editable block ================= */
+
+const $ = id => document.getElementById(id);
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+document.title = SITE.name + " Portfolio";
+$("name").textContent = SITE.name;
+$("role").textContent = SITE.role;
+$("loc").textContent = SITE.location;
+$("avatar").textContent = SITE.name.split(/\s+/).map(w => w[0]).slice(0, 2).join("").toUpperCase();
+$("email").textContent = SITE.email;
+$("contactText").textContent = SITE.contactText;
+$("foot").textContent = "© " + new Date().getFullYear() + " " + SITE.name;
+
+SITE.links.forEach(l => { const a = el("a", null, l.label); a.href = l.url; a.target = "_blank"; a.rel = "noopener"; $("links").appendChild(a); });
+SITE.about.forEach(t => $("aboutBody").appendChild(el("p", null, t)));
+SITE.facts.forEach(f => { const d = el("div", "fact"); d.append(el("b", null, f.value), el("span", null, f.label)); $("facts").appendChild(d); });
+
+function timeline(list, items) {
+  items.forEach(it => {
+    const li = el("li", it.now ? "now" : "");
+    li.append(el("div", "when", it.when), el("h3", null, it.title), el("div", "org", it.org));
+    if (it.points && it.points.length) { const ul = el("ul"); it.points.forEach(p => ul.appendChild(el("li", null, p))); li.appendChild(ul); }
+    list.appendChild(li);
+  });
+}
+timeline($("expList"), SITE.experience);
+timeline($("eduList"), SITE.education);
+
+SITE.skills.forEach(g => {
+  const d = el("div", "skillgroup"); d.appendChild(el("h3", null, g.group));
+  const c = el("div", "chips"); g.items.forEach(i => c.appendChild(el("span", "chip", i))); d.appendChild(c);
+  $("skillList").appendChild(d);
+});
+SITE.projects.forEach(p => {
+  const d = el("div", "proj"); d.append(el("h3", null, p.title), el("p", null, p.text));
+  const c = el("div", "chips"); p.stack.forEach(i => c.appendChild(el("span", "chip", i))); d.appendChild(c);
+  if (p.url) { const a = el("a", null, "View project"); a.href = p.url; a.target = "_blank"; a.rel = "noopener"; d.appendChild(a); }
+  $("projList").appendChild(d);
+});
+SITE.certs.forEach(c => { const li = el("li"); const b = el("div"); b.append(el("b", null, c.name), document.createTextNode(" · " + c.by)); li.append(b, el("span", null, c.year)); $("certList").appendChild(li); });
+const aw = el("li"); aw.append(el("b", null, "Awards"), el("span", null, SITE.awards.join(" · "))); $("certList").appendChild(aw);
+
+// navigation built from the sections
+const navItems = [["about","About"],["experience","Experience"],["education","Education"],["skills","Skills"],["projects","Selected work"],["certs","Certifications"],["contact","Contact"]];
+navItems.forEach(([id, label]) => { const a = el("a", null, label); a.href = "#" + id; a.dataset.id = id; $("nav").appendChild(a); });
+const links = [...document.querySelectorAll("#nav a")];
+function spy() {
+  let cur = navItems[0][0];
+  navItems.forEach(([id]) => { if ($(id).getBoundingClientRect().top < 140) cur = id; });
+  links.forEach(a => a.classList.toggle("on", a.dataset.id === cur));
+}
+addEventListener("scroll", spy, { passive: true }); spy();
+
+// copy email
+$("copy").addEventListener("click", async () => {
+  const b = $("copy");
+  try { await navigator.clipboard.writeText(SITE.email); b.textContent = "Copied"; }
+  catch (e) { const r = document.createRange(); r.selectNodeContents($("email")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected, press copy"; }
+  setTimeout(() => b.textContent = "Copy address", 1800);
+});
+
+// theme toggle (system by default)
+$("theme").addEventListener("click", () => {
+  const root = document.documentElement;
+  const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "light" : "dark";
+});
+</script>
+
+</body>
+</html>
