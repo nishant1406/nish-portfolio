@@ -180,7 +180,7 @@ const SITE = {
     { value: "10+", label: "Professional certifications" }
   ],
   experience: [
-    { when: "Aug 2022 to Present", title: "Senior Platform Engineer", org: "Tata Consultancy Services, Stockholm, Sweden", now: true,
+    { when: "Sep 2024 to Present", title: "Senior Platform Engineer", org: "Tata Consultancy Services, Stockholm, Sweden", now: true,
       points: [
         "Designed and evolved CAF-aligned Azure landing zones and foundational platform services for secure, reusable environments across engineering teams.",
         "Built reusable Terraform modules that replaced manual, ticket-based provisioning with self-service infrastructure as code.",
@@ -189,6 +189,16 @@ const SITE = {
         "Rolled out Azure Databricks Unity Catalog governance, workspace policies and cluster policies for better access control, auditability and data lineage.",
         "Reduced Azure infrastructure costs by 20% through right-sizing and autoscaling, with Grafana and Azure Monitor dashboards for cost and platform health.",
         "Mentored junior engineers on platform design, Terraform reviews and deployment trade-offs."
+      ] },
+    { when: "Aug 2022 to Aug 2024", title: "Data Engineer", org: "Tata Consultancy Services, Solna, Sweden",
+      points: [
+        "Administered a shared Databricks environment for data engineering and analytics teams, configuring Unity Catalog, cluster policies and access controls for secure data access.",
+        "Designed and implemented a Medallion architecture on Azure Data Lake Storage Gen2, with Bronze (raw), Silver (cleaned and conformed) and Gold (analytics-ready) layers.",
+        "Developed PySpark and Spark SQL transformations for large-scale processing, with schema validation and deduplication rules built into the pipelines.",
+        "Built Azure Data Factory ingestion frameworks for file-based loads, REST APIs and SQL Server change data capture, plus near-real-time streaming with Azure Event Hubs.",
+        "Provisioned Databricks workspaces, Data Factory pipelines and supporting network infrastructure with Terraform and Azure DevOps for repeatable deployments.",
+        "Monitored pipeline health and data freshness with Log Analytics and Application Insights, so teams could catch issues before they reached downstream reporting.",
+        "Deployed Microsoft Purview for data cataloguing and lineage, and partnered with analysts and data scientists to turn requirements into reliable pipeline changes."
       ] },
     { when: "Jun 2021 to Jul 2022", title: "Senior Database Administrator", org: "Tata Consultancy Services, Gurugram, India",
       points: [
@@ -212,7 +222,7 @@ const SITE = {
     { group: "Azure operations and infrastructure", items: ["VMs", "App Services", "Functions", "AKS", "VNet", "VPN Gateway", "ExpressRoute", "WAF", "Private Endpoints", "DNS", "Hybrid cloud"] },
     { group: "Automation and IaC", items: ["Terraform", "Bicep", "ARM Templates", "Azure DevOps", "GitHub Actions", "CI/CD", "PowerShell", "Python", "Bash", "Git"] },
     { group: "Security and identity", items: ["Entra ID", "RBAC", "PIM", "Defender for Cloud", "Azure Policy"] },
-    { group: "Data platforms", items: ["Azure Databricks", "Data Factory", "Synapse Analytics", "Delta Lake", "Microsoft Fabric"] },
+    { group: "Data platforms", items: ["Azure Databricks", "PySpark", "Spark SQL", "Data Factory", "ADLS Gen2", "Event Hubs", "Medallion architecture", "Delta Lake", "Synapse Analytics", "Microsoft Fabric", "Microsoft Purview"] },
     { group: "Databases", items: ["Azure SQL", "SQL Server", "PostgreSQL", "MySQL", "Cosmos DB"] },
     { group: "Monitoring and FinOps", items: ["Azure Monitor", "Log Analytics", "Application Insights", "Grafana", "Cost optimisation"] },
     { group: "Resilience and containers", items: ["Backup design", "Recovery runbooks", "Failover testing", "Kubernetes (AKS)", "Docker"] },
@@ -224,6 +234,8 @@ const SITE = {
     { title: "Disaster recovery region", text: "A secondary Azure region with VNets, peering, load balancing and firewall rules, built to agreed RTO and RPO targets.", stack: ["Azure", "Networking", "Backup"], url: "" },
     { title: "Databricks governance", text: "Unity Catalog, workspace policies and cluster policies that improved access control, auditability and data lineage.", stack: ["Databricks", "Unity Catalog", "Entra ID"], url: "" },
     { title: "Cost optimisation", text: "Compute right-sizing and autoscaling that cut Azure spend by 20%, with Grafana and Azure Monitor dashboards for ongoing visibility.", stack: ["FinOps", "Grafana", "Azure Monitor"], url: "" },
+    { title: "Medallion data lakehouse", text: "Bronze, Silver and Gold layers on ADLS Gen2 with PySpark transformations, schema validation and deduplication built into the pipelines.", stack: ["Databricks", "PySpark", "ADLS Gen2"], url: "" },
+    { title: "Ingestion and streaming", text: "Data Factory frameworks for files, REST APIs and SQL Server CDC, plus near-real-time streaming with Event Hubs and freshness monitoring.", stack: ["Data Factory", "Event Hubs", "Log Analytics"], url: "" },
     { title: "Data warehouse migration", text: "End-to-end move of a data warehouse from on-premises to Azure, including Synapse, Azure SQL and Data Factory pipelines.", stack: ["Synapse", "Data Factory", "Azure SQL"], url: "" }
   ],
   certs: [
